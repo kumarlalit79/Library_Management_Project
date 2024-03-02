@@ -1,0 +1,22 @@
+﻿.footerlinks{
+    color : #ffffff;
+    text-decoration: none !important;
+}
+
+#foot{
+    color : white;
+}
+
+/*hover kene pr colour change kr dena yellow*/
+.footerlinks:hover {
+    color: #ffd800;
+}
+
+#footer1 {
+    background: #0d6efd;
+}
+
+#footer2 {
+    background: #0066ff;
+}
+
