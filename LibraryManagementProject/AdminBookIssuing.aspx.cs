@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace LibraryManagementProject
 {
@@ -127,6 +128,9 @@ namespace LibraryManagementProject
 
                 cmd.ExecuteNonQuery();
 
+
+              // jab tum book issue kar loge to current stock - 1 hona chahiye.
+                //to uske liye tumhe update query chalani hogi
                 cmd = new SqlCommand("UPDATE book_master_tbl SET current_stock = current_stock-1 WHERE  book_id='"+TextBox2.Text.Trim()+"'" , con);
 
                 cmd.ExecuteNonQuery();
@@ -248,6 +252,7 @@ namespace LibraryManagementProject
                     con.Open();
                 }
 
+                // for book name
                 SqlCommand cmd = new SqlCommand("SELECT book_name FROM book_master_tbl WHERE book_id='"+TextBox2.Text.Trim()+"'", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -263,7 +268,7 @@ namespace LibraryManagementProject
                     Response.Write("<script>alert('Wrong book id')</script>");
                 }
                 
-
+                // for full name
                 cmd = new SqlCommand("SELECT full_name FROM member_master_tbl WHERE member_id='" + TextBox1.Text.Trim()+"'", con);
 
                 da = new SqlDataAdapter(cmd);

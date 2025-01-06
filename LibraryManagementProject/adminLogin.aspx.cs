@@ -31,6 +31,7 @@ namespace LibraryManagementProject
                         Session["username"] = dr.GetValue(0).ToString();
                         Session["fullname"] = dr.GetValue(2).ToString();
                         Session["role"] = "admin";
+                        // admin ke liye hamne status session nahi banaya, cuz wo hi to sbka status check karega.
                     }
                     Response.Redirect("Homepage.aspx");
                 }

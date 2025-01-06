@@ -33,7 +33,8 @@ namespace LibraryManagementProject
                     while(dr.Read())
                     {
                         Response.Write("<script>alert('Login Successfull')</script>");
-                        Session["username"] = dr.GetValue(8).ToString();
+                        Session["username"] = dr.GetValue(8).ToString();//8th position pe jo value hai dr use get karlo keh rahe hai..db mai 8th position pe member id hai to ham usi ko get kar rahe hai.
+
                         Session["fullname"] = dr.GetValue(0).ToString();
                         Session["role"] = "user";
                         Session["status"] = dr.GetValue(10).ToString();
@@ -41,7 +42,7 @@ namespace LibraryManagementProject
                     Response.Redirect("Homepage.aspx");
                 }
                 else
-                    Response.Write("<script>alert('Invalid User')</script>");
+                    Response.Write("<script>alert('Invalid User')</script>");//agr koi bhi row nahi mili to means invalid user hai.
             }
             catch (Exception ex)
             {

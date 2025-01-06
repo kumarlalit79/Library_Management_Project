@@ -83,7 +83,7 @@ namespace LibraryManagementProject
 
         void deleteMemeberById()
         {
-            if (checkIfAuthorExist())
+            if (checkIfAuthorExist())//agr member exists karta ho tabhi member ko delete karna
             {
                 try
                 {
@@ -124,11 +124,11 @@ namespace LibraryManagementProject
 
                 SqlCommand cmd = new SqlCommand(" SELECT * FROM member_master_tbl WHERE member_id='" + txtMemberId.Text.Trim() + "'", con);
                 SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                if (dr.HasRows)//checking ki data reader ko actually koi row mili ya nahi
                 {
-                    while (dr.Read())
+                    while (dr.Read()) // dr read krega value col mai se or cols ko mai get value ki help se access kr raha hoon indexing ki help se
                     {
-                        txtFullName.Text = dr.GetValue(0).ToString();
+                        txtFullName.Text = dr.GetValue(0).ToString();// full name mera 0th index waali col mai hai
                         txtStatus.Text = dr.GetValue(10).ToString();
                         txtDOB.Text = dr.GetValue(1).ToString();
                         txtContact.Text = dr.GetValue(2).ToString();

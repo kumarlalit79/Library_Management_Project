@@ -85,7 +85,7 @@ namespace LibraryManagementProject
                 // checking wheater we have got any record or not
                 if (dt.Rows.Count >= 1)
                 {
-                    TextBox2.Text = dt.Rows[0][1].ToString();
+                    TextBox2.Text = dt.Rows[0][1].ToString(); // first row and second column..0th row and 1st column
                 }
                 else
                 {
@@ -185,7 +185,7 @@ namespace LibraryManagementProject
         bool checkIfAuthorExist()
         {
             try
-            {
+            {  
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
                 {

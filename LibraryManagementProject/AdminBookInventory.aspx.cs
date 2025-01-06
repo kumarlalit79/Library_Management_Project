@@ -189,6 +189,7 @@ namespace LibraryManagementProject
                 // checking if we get any record or not
                 if (dt.Rows.Count >= 1)
                 {
+                    // table ki 0th row mai jo book_name waal col hai uski value le re.
                     txtBookName.Text = dt.Rows[0]["book_name"].ToString();
                     txtPublishDate.Text = dt.Rows[0]["publish_date"].ToString();
                     txtEdition.Text = dt.Rows[0]["edition"].ToString();
@@ -204,6 +205,8 @@ namespace LibraryManagementProject
                     ddPublisherName.SelectedValue = dt.Rows[0]["publisher_name"].ToString().Trim();
 
                     ListBox1.ClearSelection();
+
+                    // jaha pe multiple select kar rahe hai uska code mai likh raha hoon. is loop mai bas ham poore listbox mai traverse kar rahe hai,jese hi list box ki value selected value ke equal ho jayegi use ham selected true kar de rahe hai.
                     string[] genre = dt.Rows[0]["genre"].ToString().Trim().Split(',');
                     for (int i = 0; i < genre.Length; i++)
                     {
@@ -216,8 +219,11 @@ namespace LibraryManagementProject
                         }
                     }
                     global_actual_stock = Convert.ToInt32(dt.Rows[0]["actual_stock"].ToString().Trim());
+
                     global_current_stock = Convert.ToInt32(dt.Rows[0]["current_stock"].ToString().Trim());
+
                     global_issued_books = global_actual_stock - global_current_stock;
+
                     global_filepath = dt.Rows[0]["book_img_link"].ToString();
 
                 }
@@ -305,17 +311,20 @@ namespace LibraryManagementProject
             try
             {
                 string genres = "";
-                foreach (int i in ListBox1.GetSelectedIndices())
+                foreach (int i in ListBox1.GetSelectedIndices()) //list box mai se jo ham select kar rahe hai unka index select karlo, wo i mai store ho jayega
                 {
-                    genres = genres + ListBox1.Items[i] + ",";
+                    genres = genres + ListBox1.Items[i] + ",";// then wo value genre mai wo selected genre insert kardo.
                 }
-                genres = genres.Remove(genres.Length - 1);
+                genres = genres.Remove(genres.Length - 1);// isme last mai comma , bhi add hoga to hamne use remove kar diya.
 
 
-                string filepath = "~/book_inventory/books.png";
-                string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                FileUpload1.SaveAs(Server.MapPath("book_inventory/" + filename));
-                filepath = "~/book_inventory/" + filename;
+                // code for file upload
+                string filepath = "~/book_inventory/books.png";//file path bata diya yaha pe ki filepath hamare project ke andr hi hai, iska ~ means hota hai ki path hamare project mai hi hai.
+                                                               
+                string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);//yaha ham keh rahe hai ki path mai se get karlo file name fileupload1 ka jo ki posted hai server pe or uska filename lelo
+
+                FileUpload1.SaveAs(Server.MapPath("book_inventory/" + filename));//us file ko save kardo book_inventory ke folder mai + uske naam ke sath
+                filepath = "~/book_inventory/" + filename;//ab is filepath variable mai hamne wo dono cheez leli, isi ko ham ab DB mai store karenge.
 
 
 

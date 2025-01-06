@@ -24,7 +24,7 @@ namespace LibraryManagementProject
                 Response.Write("<script>alert('Member already exists with this member id, try other id')</script>");
             else
                 SignUpNewMember();
-        }
+        }   
 
         bool checkMemberExists()
         {
@@ -87,7 +87,7 @@ namespace LibraryManagementProject
                 cmd.Parameters.AddWithValue("@full_address", TextBox5.Text.Trim());
                 cmd.Parameters.AddWithValue("@member_id", TextBox8.Text.Trim());
                 cmd.Parameters.AddWithValue("@password", TextBox9.Text.Trim());
-                cmd.Parameters.AddWithValue("@account_status", "pending");
+                cmd.Parameters.AddWithValue("@account_status", "pending");// ye value hamne hard code ki hai
 
                 cmd.ExecuteNonQuery();
                 con.Close();

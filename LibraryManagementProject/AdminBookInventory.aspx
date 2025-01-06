@@ -344,7 +344,7 @@
                                     <ItemStyle Font-Bold="True" />
                                     </asp:BoundField>
                                     <asp:TemplateField>
-                                        <ItemTemplate>
+                                        <ItemTemplate> 
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-lg-10">
@@ -390,7 +390,7 @@
                                                     <div class="col-lg-2">
                                                         <asp:Image CssClass="img-fluid p-2" ID="Image1" runat="server" ImageUrl='<%# Eval("book_img_link") %>' />
                                                     </div>
-                                                </div>
+                                                 </div>
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
